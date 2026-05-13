@@ -1,4 +1,5 @@
 import colorama
+import time
 from datetime import datetime
 from colorama import Fore, Style
 from textblob import TextBlob
@@ -11,7 +12,7 @@ convo_history = []
 def get_valid_name():
     c = 0
     while True:
-        username = input(f"{Fore.LIGHTRED_EX}Enter your name to continue: {Fore.CYAN}")
+        username = input(f"{Fore.LIGHTRED_EX}Enter your name to continue: {Fore.YELLOW}")
         print()
         
         if " " in username:
@@ -40,18 +41,20 @@ def get_valid_name():
                 print(f"{Fore.RED}Beep! Beep! Looks like you've entered your name incorrectly. Kindly do not use any symbols or numbers in your username.")
                 continue
 
-# FUNCTION FOR ANALYSING THE SENTIMENT 
+# FUNCTION FOR VERY BASIC ANIMATION PROCESSING
 def show_processing_animation():
     print("IN...")
+    time.sleep(1)
 
-    for i in range(1, 4, -1):
-        print(i)
+    for i in reversed(range(1, 4)):
+        print(i, end = "            ")
+        time.sleep(1)
 
-
+# FUNCTION FOR ANALYSING THE SENTIMENT 
 def analyse_sentiment(user_input):
 
     show_processing_animation()
-    
+    print()
     polarity = TextBlob(user_input).sentiment.polarity
 
     if polarity > 0:
@@ -128,6 +131,8 @@ print()
 print(f"{Fore.CYAN}Type a sentence into the prompt and I will analyze your sentences with TextBlob and show you the sentiment. I will also save your history of analyses.")
 print()
 print(f"{Fore.CYAN}Commands you can use? => {Fore.YELLOW}'summary'{Fore.CYAN},{Fore.YELLOW}'history'{Fore.CYAN}, {Fore.YELLOW}'reset/clear'{Fore.CYAN}, {Fore.YELLOW}'help'{Fore.CYAN} or {Fore.YELLOW}'exit'{Fore.CYAN} to quit.\n")
+print()
+print(f"{Fore.RED} Note: Please do refrain from using these keywords in your sentences for analysis! Thank you!")
 print(f"                                          {Fore.MAGENTA}SO...   LET'S GET STARTED!!!")
 print()
 
@@ -135,8 +140,24 @@ print()
 while True:
     user_input = input(f"{Fore.BLUE}>> {Style.RESET_ALL}").strip()
 
-    if user_input.lower() in ["history", "summary", "reset", "clear", "help"]:
-        execute_command(user_input.lower())
+    if "history" in user_input.lower():
+        command = "history"
+        execute_command(command)
+        continue
+
+    elif "summary" in user_input.lower():
+        command = "summary"
+        execute_command(command)
+        continue
+
+    elif "reset" in user_input.lower() or "clear" in user_input.lower():
+        command = "reset"
+        execute_command(command)
+        continue
+
+    elif "help" in user_input.lower():
+        command = "help"
+        execute_command(command)
         continue
 
     elif user_input.lower() == "exit":
