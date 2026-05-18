@@ -10,9 +10,10 @@ convo_history = []
 
 # Lists and Dictionaries:
 destinations = {
-    "beaches": ["Bali", "Maldives", "Phuket"],
+    "beaches": ["Bali", "Maldives"],
     "mountains": ["Swiss Alps", "Rocky Mountains", "Himalayas"],
-    "cities": ["Tokyo", "Paris", "New York"]
+    "cities": [],
+    "trending destinations": ["Singapore", "Bangkok", "Tokyo", "Paris", "Kuala Lumpur", "London", "Phuket"] 
 }
 
 jokes = [
@@ -63,31 +64,46 @@ def help():
     print("3. Provie weather informations for places!")
     print("4. Get you the latest news reports for the places!")
     print("5. Show the local time in different cities!")
-    print(". Even tell you a joke (travel-related)!")
+    print("6. Even tell you a joke (travel-related)!")
     print()
     print(f"Press {Fore.RED}'bye'{Fore.RESET} or {Fore.RED}'exit'{Fore.RESET} to end.")
 
 # FUNCTION 3: Recommendations 
-def recommend():
-    p = normalize_input(input("Beaches, mountains or cities? "))
+def recommend(p):
+    if "something else" in p or "some other place" in p or "a different place" in p:
+        print()
+        nex = normalize_input(input("Alright! Beaches, Mountains or other cities? "))
 
-    if p in destinations:
-        suggestion = random.choice(destinations[p])
-        print(f"Do you like {suggestion}? (Yes or No)")
+        if nex in destinations:
+            suggestion = random.choice(destinations[p])
+            print(f"Do you like {suggestion}? (Yes or No)")
 
-        ans = normalize_input(input())
+            ans = normalize_input(input())
 
-        if ans == "yes":
-            print(f"Enjoy the {suggestion}!")
-            return suggestion
-            help()
+            if ans == "yes":
+                print(f"Wonderful! Would you like to know about some local weather updates in {suggestion}? ")
+                local_updates = input(">> ")
 
-        elif ans == "no":
-            print("Let's try another one!")
-            recommend()
+                if "yes" in local_updates or "sure" in local_updates:
+                    weather_info()
+                elif local_updates == "no thanks":
+                    print(f"Alright, do enjoy your research and a possible holiday in {suggestion}!")
+                    help()
+                    return suggestion
+                else:
+                    print("Error!")
+
+            elif ans == "no":
+                print("No worries! Let's try another one!")
+                recommend()
 
         else:
             print("Please say Yes or No! Response not considered.")
+
+    elif p in destinations["trending destinations"]:
+        if 
+
+
 
     else:
         print("Sorry! I don't have that destination.")
@@ -114,8 +130,7 @@ def normalize_input(text):
     return re.sub(r"\s+", " ", text.strip().lower())
 
 # FUNCTION 7: Weather Information
-def weather_info():
-    inf = normalize_input(input("Which place's weather would you like to know about? "))
+def weather_info(inf):
 
     if inf == "bali":
         print("Bali: Warm and tropical year-round (around 27°C-30°C). Dry season is April to October; wet season is November to March.")
@@ -147,60 +162,60 @@ def local_time():
 
 # FUNCTION 9: Local News Report
 def local_news_report():
-    inf = normalize_input(input("Which place's news report would you like to see? "))
+    lin = normalize_input(input("Which place's news report would you like to see? "))
 
     # --- Tropical Beaches ---
-    if inf == "bali":
+    if lin == "bali":
         print("\n=== BALI DAILY NEWS ===")
         print("1. [ENVIRONMENT] Sudden policy shift forces local landfills to reject organic waste, causing major garbage cleanup efforts.")
         print("2. [TOURISM] Post-pandemic visitor counts hit an all-time record, straining freshwater resources in the southern belt.")
         print("3. [ECONOMY] Island infrastructure struggle sparks a fresh debate on capping rapid villa and beach club development.")
     
-    elif inf == "maldives":
+    elif lin == "maldives":
         print("\n=== MALDIVES TODAY ===")
         print("1. [COMMUNITY] Maldives mourns loss of a brave local military rescue diver during a deep-sea recovery mission.")
         print("2. [MARITIME] Tourism Ministry temporarily suspends cruise ship operating license pending a safety investigation.")
         print("3. [CLIMATE] Global marine researchers wrap up their official scientific mission tracking local coral reef biodiversity.")
         
-    elif inf == "phuket":
+    elif lin == "phuket":
         print("\n=== PHUKET EXPRESS ===")
         print("1. [CRIME] High-profile international weapons suspect arrested in high-stakes joint operation by Thai police.")
         print("2. [REGULATION] Government initiates a major crackdown on illegal commercial land encroachment around Freedom Beach.")
         print("3. [HEALTH] Authorities investigate a mysterious incident after several international tourists collapse at a beachside cafe.")
 
     # --- Mountains ---
-    elif inf == "swissalps":
+    elif lin == "swissalps":
         print("\n=== ALPINE CHRONICLE ===")
         print("1. [CLIMATE] Swiss glacier retreat speeds up, prompting scientists to demand a massive shift in local conservation policy.")
         print("2. [SPORTS] Record-breaking winter ski season draws to a close as luxury resorts transition into summer hiking hubs.")
         print("3. [INFRASTRUCTURE] Multimillion-dollar upgrade announced for historic mountain railways to handle high-altitude summer crowds.")
         
-    elif inf == "rockymountains":
+    elif lin == "rockymountains":
         print("\n=== ROCKY MOUNTAIN POST ===")
         print("1. [WILDLIFE] Conservationists celebrate a massive milestone as regional gray wolf populations stabilize.")
         print("2. [SAFETY] National Park service issues an early wildfire threat warning ahead of an unseasonably dry, hot summer.")
         print("3. [ADVENTURE] Elite mountaineer sets a blazing new speed record across the rugged Continental Divide trail.")
         
-    elif inf == "himalayas":
+    elif lin == "himalayas":
         print("\n=== HIMALAYAN RECORD ===")
         print("1. [EXPEDITION] Chaos on Everest: Massive traffic jams near the summit spark fresh international calls for stricter climbing permits.")
         print("2. [ECO-NEWS] Himalayan village implements an innovative plastic waste-to-currency recycling initiative.")
         print("3. [GEOLOGY] Seismic tracking stations get an advanced, high-tech upgrade to better detect glacial lake outburst floods.")
 
     # --- Major Cities ---
-    elif inf == "tokyo":
+    elif lin == "tokyo":
         print("\n=== TOKYO METROPOLITAN ===")
         print("1. [SPORTS] 15-year-old gymnastics prodigy Nishiyama Misa clinches a stunning victory to secure an Asian Games ticket.")
         print("2. [ATHLETICS] Track and field superstar Noah Lyles takes center stage at Tokyo's highly anticipated Golden Grand Prix.")
         print("3. [TECH] Local transportation giant rolls out autonomous AI-powered taxi fleets across major downtown districts.")
         
-    elif inf == "paris":
+    elif lin == "paris":
         print("\n=== LE JOURNAL DE PARIS ===")
         print("1. [POLITICS] Historic municipal shift as Socialist leader Emmanuel Grégoire is officially elected the new Mayor of Paris.")
         print("2. [HEALTH] Medical teams at Bourget airport mobilize to isolate a suspected rare viral outbreak from an arriving cruise ship.")
         print("3. [SPORTS] The NFL officially schedules its highly anticipated international regular-season debut game in Paris.")
         
-    elif inf == "newyork":
+    elif lin == "newyork":
         print("\n=== NEW YORK CHRONICLE ===")
         print("1. [CULTURE] Broadway experiences a massive box-office renaissance following an unprecedented sweep of original musical openings.")
         print("2. [HOUSING] City Council passes a historic, landmark tenant protection bill after a lengthy, tense legislative battle.")
@@ -226,7 +241,11 @@ def chatbot():
         user_input = normalize_input(userinput)
 
         if 'recommend' in user_input or 'suggest' in user_input:
-            recommend()
+            print("                        TRENDING DESTINATIONS OF TODAY!")
+            print("Singapore  |  Bangkok  |  Tokyo  |  Paris  |  Kuala Lumpur  |  London  |  Phuket")
+            p = normalize_input(input("Which place would you like to explore today? The trending ones, or something special?! "))
+
+            recommend(p)
         
         elif 'tips' in user_input or 'packing' in user_input:
             packing_tips()
@@ -238,7 +257,9 @@ def chatbot():
             help()
 
         elif 'weather' in user_input:
-            weather_info()
+            inf = normalize_input(input("Which place's weather would you like to know about? "))
+
+            weather_info(inf)
         
         elif 'time' or 'localtime' in user_input:
             local_time()
@@ -246,10 +267,18 @@ def chatbot():
         elif 'news' or 'report' in user_input:
             local_news_report()
 
+        elif 'print' in user_input:
+            print(convo_history)
+
         elif "exit" in user_input:
             print("Alright! It's been great talking to you!")
-            x = input("Would you like to save your conversation history? ")
+            x = input("Would you like to save your conversation history? ").lower()
 
+            if "yes" in x:
+                filename = f"TravoBot_ChatHistory_{final_name}.txt"
+
+                f = open(filename, 'w')
+                f.write(convo_history)
 
         else:
             print("Unexpected input! Try again.")
