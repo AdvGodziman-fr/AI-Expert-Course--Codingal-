@@ -27,10 +27,10 @@ game_history = []
 
 # FUNCTION 1: Checking Pattern in Player moves
 def pattern_check():
-    print("AI is deciding it's move", end="")
+    print(f"{Fore.CYAN}AI is deciding it's move{Style.RESET_ALL}", end="")
 
     for l in range(1,4): 
-        print('.', end="")
+        print(f"{Fore.CYAN}.", end="")
         time.sleep(1)
 
     print()
@@ -49,9 +49,9 @@ def pattern_check():
         elif scissor_count > rock_count and scissor_count > paper_count:
             ai_move = 'Rock'
 
-        print("AI has decided. Please wait for a few seconds", end = "")
+        print(f"{Fore.CYAN}AI has decided. Please wait for a few seconds{Style.RESET_ALL}", end = "")
         for l in range(1,4): 
-            print('.', end="")
+            print(f"{Fore.CYAN}.", end="")
             time.sleep(1)
 
         print()
@@ -60,14 +60,14 @@ def pattern_check():
         # Calling F3 in F1
         roll()
 
-        print(ai_move)
+        print(f"{Fore.YELLOW}{Style.BRIGHT}{ai_move}")
         return ai_move
 
     else: 
         ai_move = random.choice(possible_moves)
-        print("AI has decided. Please wait for a few seconds", end = "")
+        print(f"{Fore.CYAN}AI has decided. Please wait for a few seconds{Style.RESET_ALL}", end = "")
         for l in range(1,4): 
-            print('.', end="")
+            print(f"{Fore.CYAN}.", end="")
             time.sleep(1)        
             
         print()
@@ -76,7 +76,7 @@ def pattern_check():
         # Calling F3 in F1
         roll()
 
-        print(ai_move)
+        print(f"{Fore.YELLOW}{Style.BRIGHT}{ai_move}")
         return ai_move
 
 
@@ -86,39 +86,39 @@ def win_check(move1, move2):
     player_wins = 0
 
     if (move1, move2) in winning_combos_player:
-        print("Aw shucks! You win this one!")
+        print(f"{Fore.GREEN}{Style.BRIGHT}Aw shucks! You win this one!")
         player_wins += 1
         result = "Player wins!"
     elif (move1, move2) in winning_combos_ai:
-        print("Well, looks like you lost!")
+        print(f"{Fore.RED}{Style.BRIGHT}Well, looks like you lost!")
         ai_wins += 1
         result = "AI wins!"
     elif (move1, move2) in tie_combo:
-        print("Oh! It's a tie!")
+        print(f"{Fore.YELLOW}Oh! It's a tie!")
         result = "Tie!"
     else:
-        print("Error detected! Please re-run the program")
+        print(f"{Fore.RED}Error detected! Please re-run the program")
 
     game_history.append({f"AI Point": ai_wins, "Player Point": player_wins, "Result": result})  
     return ai_wins, player_wins
 
 # FUNCTION 3: Calling "Rock, Paper, Scissors"
 def roll():
-    print("ROCK...        ", end = " ")
+    print(f"{Fore.RED}ROCK...        {Style.RESET_ALL}", end = " ")
     time.sleep(1)
-    print("PAPER...        ", end = " ")
+    print(f"{Fore.YELLOW}PAPER...        {Style.RESET_ALL}", end = " ")
     time.sleep(1)
-    print("SCISSORS...        ", end = " ")
+    print(f"{Fore.GREEN}SCISSORS...        {Style.RESET_ALL}", end = " ")
     time.sleep(1)
-    print("SHOOT!")
+    print(f"{Fore.MAGENTA}{Style.BRIGHT}SHOOT!")
 
 #FUNCTION 4: Printing Rules
 def rules():
     print()
-    print("RULES OF THE GAME")
-    print("1. Please type the complete name of your move, with the first letter in capital (eg. 'Rock', instead of 'rock' or 'roc')")
-    print("2. Do not add multiple moves into the prompt. Decide on 1 move and type it in correctly!")
-    print("3. If you want to exit, you can type 'No' when asked if you wanna play again.")
+    print(f"{Fore.BLUE}{Style.BRIGHT}RULES OF THE GAME")
+    print(f"{Fore.BLUE}1. Please type the complete name of your move, with the first letter in capital (eg. 'Rock', instead of 'rock' or 'roc')")
+    print(f"{Fore.BLUE}2. Do not add multiple moves into the prompt. Decide on 1 move and type it in correctly!")
+    print(f"{Fore.BLUE}3. If you want to exit, you can type 'No' when asked if you wanna play again.")
     print()
     time.sleep(2)
 
@@ -139,8 +139,8 @@ def counting_wins():
 
 # FUNCTION 6: Scoreboard display
 def scoreboard(name, p1, p2):
-    print("FINAL SCOREBOARD")
-    print(f"AI Points: {p1}  |  {name} Points: {p2}")
+    print(f"{Fore.MAGENTA}{Style.BRIGHT}FINAL SCOREBOARD")
+    print(f"{Fore.CYAN}AI Points: {Fore.YELLOW}{p1}{Fore.CYAN}  |  {Fore.GREEN}{name}{Fore.CYAN} Points: {Fore.YELLOW}{p2}")
 
 # FUNCTION 7: Correcting Input
 def correct_input():
@@ -148,78 +148,78 @@ def correct_input():
     while putin:
         player_choice = input(">> ")
         if 'rock' in player_choice.lower() or 'paper' in player_choice.lower() or 'scissors' in player_choice.lower():
-            print("Processing...")
-            print("V", end="")
+            print(f"{Fore.LIGHTBLACK_EX}Processing...")
+            print(f"{Fore.GREEN}V", end="")
             time.sleep(0.1)
-            print("a", end="")
+            print(f"{Fore.GREEN}a", end="")
             time.sleep(0.1)
-            print("l", end="")
+            print(f"{Fore.GREEN}l", end="")
             time.sleep(0.1)
-            print("i", end="")
+            print(f"{Fore.GREEN}i", end="")
             time.sleep(0.1)
-            print("d", end="")
+            print(f"{Fore.GREEN}d", end="")
             time.sleep(0.1)
             print(" ", end="")
             time.sleep(0.1)
-            print("i", end="")
+            print(f"{Fore.GREEN}i", end="")
             time.sleep(0.1)
-            print("n", end="")
+            print(f"{Fore.GREEN}n", end="")
             time.sleep(0.1)
-            print("p", end="")
+            print(f"{Fore.GREEN}p", end="")
             time.sleep(0.1)
-            print("u", end="")
+            print(f"{Fore.GREEN}u", end="")
             time.sleep(0.1)
-            print("t", end="")
+            print(f"{Fore.GREEN}t", end="")
             time.sleep(0.1)
-            print("!")
+            print(f"{Fore.GREEN}!")
             
             return player_choice
 
         else:
-            print("Processing...")
-            print("I", end="")
+            print(f"{Fore.LIGHTBLACK_EX}Processing...")
+            print(f"{Fore.RED}I", end="")
             time.sleep(0.1)
-            print("n", end="")
+            print(f"{Fore.RED}n", end="")
             time.sleep(0.1)
-            print("v", end="")
+            print(f"{Fore.RED}v", end="")
             time.sleep(0.1)
-            print("a", end="")
+            print(f"{Fore.RED}a", end="")
             time.sleep(0.1)
-            print("l", end="")
+            print(f"{Fore.RED}l", end="")
             time.sleep(0.1)
-            print("i", end="")
+            print(f"{Fore.RED}i", end="")
             time.sleep(0.1)
-            print("d", end="")
+            print(f"{Fore.RED}d", end="")
             time.sleep(0.1)
             print(" ", end="")
             time.sleep(0.1)
-            print("i", end="")
+            print(f"{Fore.RED}i", end="")
             time.sleep(0.1)
-            print("n", end="")
+            print(f"{Fore.RED}n", end="")
             time.sleep(0.1)
-            print("p", end="")
+            print(f"{Fore.RED}p", end="")
             time.sleep(0.1)
-            print("u", end="")
+            print(f"{Fore.RED}u", end="")
             time.sleep(0.1)
-            print("t", end="")
+            print(f"{Fore.RED}t", end="")
             time.sleep(0.1)
-            print("!")
+            print(f"{Fore.RED}!")
             print()
-            print("Kindly enter 'Rock', 'Paper' or 'Scissors' please.")
+            print(f"{Fore.YELLOW}Kindly enter 'Rock', 'Paper' or 'Scissors' please.")
             putin = True
 
 
 # MAIN FUNCTION: The game flow
 def main_game():
 
-    print("Welcome to 'Rock, Paper, Scissors!'")
+    print(f"{Fore.CYAN}{Style.BRIGHT}Welcome to 'Rock, Paper, Scissors!'")
     username = input("Please enter your name to continue: ")
 
     if username == "" or username == " ":
         print()
-        print("Alright! Your name is 'Player 1'.")
+        print(f"Alright! Your name is '{Fore.YELLOW}Player 1{Style.RESET_ALL}'.")
     else:
-        print(f"Alrighty! Welcome to the game, {username}!")
+        print(f"Alrighty! Welcome to the game, {Fore.GREEN}{username}{Style.RESET_ALL}!")
 
     # Calling F4
     rules()
@@ -229,12 +229,12 @@ def main_game():
     global c
 
     while tom:
-        print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+        print(f"{Fore.LIGHTBLACK_EX}-------------------------------------------------------------------------------------------------------------------------------------------------------------------")
         i = input("Are you ready for the game? ").lower()
 
         if 'yes' in i or 'ya' in i or 'sure' in i or 'alright' in i:
             print()
-            print("What would be your move? Rock, Paper or Scissors? 'FYI: AI cannot have access to your move before the game! Your privacy is secured (for now)!'")
+            print(f"What would be your move? {Fore.YELLOW}Rock{Style.RESET_ALL}, {Fore.YELLOW}Paper{Style.RESET_ALL} or {Fore.YELLOW}Scissors{Style.RESET_ALL}? '{Fore.MAGENTA}FYI: AI cannot have access to your move before the game! Your privacy is secured (for now)!{Style.RESET_ALL}'")
 
             # Calling F6
             player_choice = correct_input()
@@ -256,7 +256,7 @@ def main_game():
             if 'yes' in ask or 'ya' in ask or 'sure' in ask or 'alright' in ask:
                 tom = True
             else:
-                print("Alright! Do feel free to play in anytime you're free!")
+                print(f"{Fore.CYAN}Alright! Do feel free to play in anytime you're free!")
                 print()
                 ai_wins, player_wins = counting_wins()
 
@@ -266,12 +266,12 @@ def main_game():
                 game_history.clear()
 
         elif 'no' in i or 'nah' in i or 'nope' in i:
-            print("Oh! It's sad to see this end up so soon!")
+            print(f"{Fore.RED}Oh! It's sad to see this end up so soon!")
             chance_2 = input("Do you really wanna leave so soon? ").lower()
 
             if 'yes' in chance_2 or 'ya' in chance_2 or 'sure' in chance_2 or 'alright' in chance_2:
                 print()
-                print("Do feel free to play in anytime you're free!")
+                print(f"{Fore.CYAN}Do feel free to play in anytime you're free!")
                 tom = False
 
             elif 'no' in chance_2 or 'nah' in chance_2 or 'nope' in chance_2:
@@ -279,8 +279,8 @@ def main_game():
                 tom = True
 
         else:
-            print("Error!")
+            print(f"{Fore.RED}Error!")
 
 
 if __name__ == "__main__":
-    main_game()  
+    main_game()
