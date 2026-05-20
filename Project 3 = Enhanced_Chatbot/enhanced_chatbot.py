@@ -3,6 +3,7 @@ import time
 import colorama
 from colorama import Fore, Style
 from datetime import datetime
+from zoneinfo import ZoneInfo # Added to handle clean time zone conversions
 
 colorama.init(autoreset=True)
 
@@ -166,10 +167,35 @@ def weather_info(inf):
     else:
         print(f"{Fore.RED}Unexpected error! Kindly type the name of the destination/place.")
 
-# FUNCTION 8: Local Time
+# FUNCTION 8: Local Time (Updated to dynamic location lookup)
 def local_time():
-    now = datetime.now()
-    print(f"{Fore.GREEN}Your current local time and date is = {Fore.YELLOW}{now.strftime('%Y-%m-%d %H:%M:%S')}")
+    place = normalize_input(input(f"{Fore.CYAN}Which city or destination's time would you like to check? {Fore.YELLOW}")).replace(" ", "")
+    
+    # Mapping game locations to explicit standard Time Zones
+    timezones = {
+        "bali": "Asia/Makassar",
+        "maldives": "Indian/Maldives",
+        "phuket": "Asia/Bangkok",
+        "bangkok": "Asia/Bangkok",
+        "singapore": "Asia/Singapore",
+        "kualalumpur": "Asia/Kuala_Lumpur",
+        "tokyo": "Asia/Tokyo",
+        "london": "Europe/London",
+        "paris": "Europe/Paris",
+        "swissalps": "Europe/Zurich",
+        "newyork": "America/New_York",
+        "rockymountains": "America/Denver",
+        "himalayas": "Asia/Kathmandu"
+    }
+
+    if place in timezones:
+        # Fetching UTC time and translating explicitly to target zone mapping
+        now = datetime.now(ZoneInfo(timezones[place]))
+        print(f"{Fore.GREEN}The current time in {Fore.YELLOW}{place.capitalize()}{Fore.GREEN} is = {Fore.YELLOW}{now.strftime('%Y-%m-%d %H:%M:%S')}")
+    else:
+        # Fallback to system time if they type an unmapped city
+        now = datetime.now()
+        print(f"{Fore.RED}Location time zone not found. {Fore.GREEN}Your local system time is = {Fore.YELLOW}{now.strftime('%Y-%m-%d %H:%M:%S')}")
 
 # Global handle for fallback redirection automation
 forced_news_dest = None
