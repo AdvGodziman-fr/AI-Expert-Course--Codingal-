@@ -140,7 +140,7 @@ def counting_wins():
 # FUNCTION 6: Scoreboard display
 def scoreboard(name, p1, p2):
     print(f"{Fore.MAGENTA}{Style.BRIGHT}FINAL SCOREBOARD")
-    print(f"{Fore.CYAN}AI Points: {Fore.YELLOW}{p1}{Fore.CYAN}  |  {Fore.GREEN}{name}{Fore.CYAN} Points: {Fore.YELLOW}{p2}")
+    print(f"{Fore.CYAN}AI's Points: {Fore.YELLOW}{p1}{Fore.CYAN}  |  {Fore.GREEN}{name}{Fore.CYAN}'s Points: {Fore.YELLOW}{p2}")
 
 # FUNCTION 7: Correcting Input
 def correct_input():
