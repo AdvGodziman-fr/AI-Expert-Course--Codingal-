@@ -10,7 +10,7 @@ print(f"{Fore.CYAN}🕵️   Welcome to Sentiment Detective!   🕵️")
 user_name = input(f"{Fore.MAGENTA}Please enter your name: {Style.RESET_ALL}").strip()
 
 if user_name == "":
-    user_name = "Demon Slayer"
+    user_name = "Demonslayer"
 
 # Store conversation history as a list of tuples: (text -> User input, polarity, sentiment_type)
 conversation_history = []
