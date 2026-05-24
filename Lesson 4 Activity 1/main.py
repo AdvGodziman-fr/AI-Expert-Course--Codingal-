@@ -99,7 +99,7 @@ def check_win(board, symbol):
 # TODO 4: check_full(board)
 # ==========================================================
 def check_full(board):
-    # TODO: Return True if board has no digits left (all filled)
+    # Return True if board has no digits left (all filled)
     return all(not spot.isdigit() for spot in board)
 
 # ==========================================================
