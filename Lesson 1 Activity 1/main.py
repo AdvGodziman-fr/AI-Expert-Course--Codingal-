@@ -13,4 +13,4 @@ else:
     print("It's difficult to put into words, I can understand.")
 
 
-print(f"It's been great talking to you, {name} see you!")
+print(f"It's been great talking to you, {name} see you! ")
