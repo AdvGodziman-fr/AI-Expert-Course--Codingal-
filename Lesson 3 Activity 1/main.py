@@ -100,7 +100,7 @@ def chat():
             break
 
         else:
-            print("Unexpected input! Try again.")
+            print("Incorrect input! Try again.")
 
 # Run the chatbot
 if __name__ == "__main__":
