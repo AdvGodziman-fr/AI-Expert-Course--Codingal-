@@ -4,7 +4,7 @@ from colorama import init, Fore
 init(autoreset=True)
 
 # TODO: Load the data from the CSV dataset
-def load_data(file_path='imdb_top_1000.csv'):
+def load_data(file_path='MODULE_1\imdb_top_1000.csv'):
     try: 
         df = pd.read_csv(file_path)
         return df

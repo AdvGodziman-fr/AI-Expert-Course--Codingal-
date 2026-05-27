@@ -1,7 +1,17 @@
+import pandas as pd
 from colorama import Fore, Style
 from datetime import time
 
 i = 0
+
+def load_data(file_path='MODULE_1\imdb_top_1000.csv'):
+    try: 
+        df = pd.read_csv(file_path)
+        return df
+    except FileNotFoundError:
+        print("File Not Found!")
+        raise SystemExit
+    
 
 def animation_time():
     for i in range(0, 3):
