@@ -40,13 +40,13 @@ key = cv2.waitKey(0)
 # FIX: Used forward slashes to avoid Windows backslash string escaping issues
 if key == ord("s"):
     cv2.imwrite(
-        "MODULE_2/Projects/Project 1 = Image_resizer/small_img.jpg", small_img
+        "MODULE_2/Projects/Project 1 = Image_resizer/input_image_small.jpg", small_img
     )
     cv2.imwrite(
-        "MODULE_2/Projects/Project 1 = Image_resizer/medium_img.jpg", mid_img
+        "MODULE_2/Projects/Project 1 = Image_resizer/input_image_medium.jpg", mid_img
     )
     cv2.imwrite(
-        "MODULE_2/Projects/Project 1 = Image_resizer/large_img.jpg", large_img
+        "MODULE_2/Projects/Project 1 = Image_resizer/input_image_large.jpg", large_img
     )
     print("Images saved successfully!")
 else:
