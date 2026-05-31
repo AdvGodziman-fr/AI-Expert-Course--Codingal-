@@ -23,7 +23,6 @@ plt.title("Rotated Image")
 brightness_matrix = np.ones(image.shape, dtype="uint8") * 50
 
 brighter = cv2.add(image, brightness_matrix)
-
 brighter_rgb = cv2.cvtColor(brighter, cv2.COLOR_BGR2RGB)
 
 
