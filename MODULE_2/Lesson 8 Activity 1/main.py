@@ -1,5 +1,4 @@
 import cv2
-
 import matplotlib.pyplot as plt
 
 # Reads the image into memory
