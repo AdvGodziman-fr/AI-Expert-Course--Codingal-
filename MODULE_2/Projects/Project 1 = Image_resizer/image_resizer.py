@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("MODULE_2/Projects/Project 1 = Image_resizer/example.jpg")
+image = cv2.imread("MODULE_2\Assets\Images\example.jpg")
 
 # Check if image loaded correctly before proceeding
 if image is None:

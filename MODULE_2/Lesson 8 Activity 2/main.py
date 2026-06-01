@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-filename = "MODULE_2/example_img.jpg"
+filename = "MODULE_2\Assets\Images\ex_img_L8.jpg"
 
 image = cv2.imread(filename)
 

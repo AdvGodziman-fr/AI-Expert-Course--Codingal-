@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("MODULE_2\Lesson 7 Activity 1\example.jpg")
+image = cv2.imread("MODULE_2\Assets\Images\example.jpg")
 
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 

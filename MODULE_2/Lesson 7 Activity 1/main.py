@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("MODULE_2\Lesson 7 Activity 1\example.jpg")
+image = cv2.imread("MODULE_2\Assets\Images\example.jpg")
 window_name = "Loaded CV Window"
 
 cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
