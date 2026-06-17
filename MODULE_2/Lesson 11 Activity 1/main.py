@@ -1,11 +1,8 @@
-# BEGIN
-
 # IMPORT OpenCV library as cv2
 import cv2
 
 # IMPORT NumPy as np
 import numpy as np
-
 import sys
 
 class Keys:
