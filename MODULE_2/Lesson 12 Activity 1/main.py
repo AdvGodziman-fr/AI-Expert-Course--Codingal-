@@ -37,7 +37,7 @@ while True:
         eyes = eye_cascade.detectMultiScale(roi_gray_img, minNeighbors=5)
 
         for (ex, ey, ew, eh) in eyes:
-            cv2.rectangle(frame, (ex , ey), (ex + ew, ey + eh), (0, 255, 0), 2)
+            cv2.rectangle(roi_img, (ex , ey), (ex + ew, ey + eh), (0, 255, 0), 2)
 
     # Display the resulting frame
     cv2.imshow("Face Detection - press q to Quit", frame)
