@@ -2,6 +2,20 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+#Saving the image
+def save_image(given_img):
+    choi = input("Would you like to save this image?").lower()
+
+    if "yes" in choi or "ya" in choi:
+        name = input("Please type the name of your image: ")
+        new_ver = name.replace(" ", "_")
+        cv2.imwrite(f"MODULE_2/Projects/Project 4 = Edge_Detection/{new_ver}.png", given_img)
+        print("Image saved successfully!")
+
+    if "no" in choi:
+        print("Got it! Image not saved!")
+
+
 """Utility function to display an image"""
 def display_image(title, image, original):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 16))
@@ -56,6 +70,8 @@ def interactive_edge_detection(image_path):
 
             display_image("Sobel Edge Applied", combined_sobel, img)
 
+            save_image(combined_sobel)
+
         # CANNY EDGE DETECTION
         elif choice == "2":
             lower_threshold = int(input("Enter lower threshold: ") or 100)
@@ -64,6 +80,7 @@ def interactive_edge_detection(image_path):
             canny_img = cv2.Canny(img_gray, lower_threshold, upper_threshold)
 
             display_image("Canny Edge Applied", canny_img, img)
+            save_image(canny_img)
             
         
         # LAPLACIAN EDGE DETECTION
@@ -79,6 +96,8 @@ def interactive_edge_detection(image_path):
 
             display_image("Gaussian Blurred Image", blurred_img_1, img)
 
+            save_image(blurred_img_1)
+
         # MEDIAN FILTERING
         elif choice == "5":
             kernel_size = int(input("Please enter the kernel size (must be odd): "))
@@ -86,6 +105,8 @@ def interactive_edge_detection(image_path):
             blurred_img_2 = cv2.medianBlur(img, kernel_size)
 
             display_image("Median Blurred Image", blurred_img_2, img)
+
+            save_image(blurred_img_2)
         
         elif choice == "6":
             print("Exiting...")
