@@ -39,6 +39,7 @@ while True:
     cv2.imshow("FIFA WC2026", better_img)
     cv2.waitKey(0) & 0xFF
 
-    match :
-        case 
+    match key:
+        case Keys.KEY_B:
+            
 
