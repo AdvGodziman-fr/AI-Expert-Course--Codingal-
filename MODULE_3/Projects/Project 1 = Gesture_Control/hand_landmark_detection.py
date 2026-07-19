@@ -19,5 +19,14 @@ if not cap.isOpened():
 
 print("Hand Tracking has started! Press 'q' to quit.")
 
+def detect_hand(hand_landmarks):
+    landmarks = hand_landmarks.landmark
+    extended = 0 
+    tip_ids = [4, 8, 12, 16, 20]
+    pip_ids = [2, 6, 10, 14, 18]
 
+    # Thumb 
+    if abs(landmarks)
 
+while True:
+    ret, frame = cap.read()

@@ -31,7 +31,7 @@ def detect_gesture(hand_landmarks):
     pip_ids = [2, 6, 10, 14, 18]
 
     # Thumb Position Check - Index Finger Pip and Thumb's Tip
-    if abs(landmarks[tip_ids[0]].x - landmarks[pip_ids[0]].x) > 0.04:
+    if abs(landmarks[tip_ids[0]].x - landmarks[pip_ids[1]].x) > 0.04:
         extended += 1
 
     # Other Finger's Extended Position Check
