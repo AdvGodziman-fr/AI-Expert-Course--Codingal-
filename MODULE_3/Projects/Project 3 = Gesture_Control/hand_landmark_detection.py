@@ -40,8 +40,15 @@ def detect_hand(hand_landmarks):
     else:
         return "Partial"
 
-def drawing_by_index():
-    
+def drawing_by_index(w, h, xf, yf):
+    IN_T = mp_hands.HandLandmark.INDEX_FINGER_TIP
+    lmd = hand_landmarks.landmark[IN_T]
+    x_ini, y_ini = int(lmd.x * w), int(lmd.y * h)
+
+
+
+
+
 
 
 while True:
