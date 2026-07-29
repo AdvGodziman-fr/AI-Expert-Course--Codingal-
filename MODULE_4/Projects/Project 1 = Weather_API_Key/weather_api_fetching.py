@@ -8,8 +8,18 @@ def get_weather_info(city_name):
 
     if response.status_code == 200:
         weather_data = response.json()
+        temp = weather_data['main']['temp']
+        hp_temp = weather_data['main']['feels_like']        
+        humid = weather_data['main']['humidity']
+        cloudiness = weather_data['clouds']['all']
+        city = weather_data['name']
 
-        print(weather_data)
+        print()
+        print("              WEATHER DETAILS")
+        print("City: ", city)
+        print("Temperature: ", temp, "Feels like: ", hp_temp)
+        print("Humidity: ", humid)
+        print("Cloudiness %: ", cloudiness)
 
     else:
         print(response.status_code)
@@ -29,7 +39,5 @@ def main():
             print("Error! Kindy enter an appropriate city name.")
         else:
             get_weather_info(user_input)
-        #print(weather)
-
 
 main()
