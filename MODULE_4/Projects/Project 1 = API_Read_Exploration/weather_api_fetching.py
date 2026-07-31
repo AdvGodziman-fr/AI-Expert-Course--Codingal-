@@ -2,7 +2,7 @@ import requests
 
 def get_weather_info(city_name):
     # Endpoint
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=B2253497d605813f6b954cf25e598b1a6&units=metric"
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name.capitalise()}&appid=B2253497d605813f6b954cf25e598b1a6&units=metric"
 
     response = requests.get(url)
 
