@@ -1,19 +1,14 @@
 import requests
-from config1 import HF_API_KEY 
+from config2 import HUGGING_FACE_API_KEY
 
-# TODO: Where is our API KEY?
-
-# TODO: TO WHICH MODEL ARE WE GOING TO SEND OUR REQUESTS?
 MODEL_ID = "facebook/bart-large-mnli"
 
 API_URL = f"https://router.huggingface.co/hf-inference/models/{MODEL_ID}"
 
-# TODO: WHICH TOPICS?
-TOPICS = ['Sports', 'Technology', 'Politics', 'Business', 'Nature', "Health"]
+TOPICS = ['Primary', 'Promotions', 'Social', 'Updates']
+HEADERS = {"Authorization": f'Bearer {HUGGING_FACE_API_KEY}'}
 
-# TODO: HOW TO ATTACH API KEY TO REQUEST? [We are adding a bearer token to our API Request]
-HEADERS = {"Authorization": f'Bearer {HF_API_KEY}'}
-
+# Asking Hugging Face for the details of the desired topics
 def ask_hf(headline: str):
     '''Send request to HuggingFace API'''
 
@@ -31,14 +26,13 @@ def ask_hf(headline: str):
 
     return r.json()
 
-
+# Getting the best topic
 def best_topic(predictions: list):
     '''Find the most likely topic predicted by the BART NLI model'''
     best_category = max(predictions, key=lambda x:x["score"])
+    score = best_category["score"]
     return best_category["label"], best_category["score"]
 
-
-# TODO: Create the progress bar graphic
 def bar(score: float) -> str:
     pct = score * 100
     blocks = int(pct // 10)
@@ -46,45 +40,36 @@ def bar(score: float) -> str:
 
 def show(headline: str, predictions: list):
     top_label, top_score = best_topic(predictions)
-    print("\n" + "=" * 60)
-    print("🗞  News Topic Classifier 📊")
-    print("=" * 60)
-    print("Headline:", headline)
+    print()
+    print("________________________________________________________________________________________")
+    print("🗞  Email Topic Classifier 📧")
+    print("________________________________________________________________________________________")
+    print("Text:", headline)
     print(f"Best topic: {top_label}")
     print(f"Confidence: [{bar(top_score)}] {round(top_score * 100, 1)}%")
 
-    print("\nTop 3 guesses:")
-    # TODO: Sort the prediction scores received from HF API in descending order & display top 3 predicted topics
-    top3 = sorted(predictions, key = lambda x: x["score"], reverse = True)
 
-    for i, p in enumerate(top3, start=1):
-        print(f"{i}. {p['label']:<11} [{bar(p['score'])}] {round(p['score']*100, 1)}%")
-        if i == 3:
-            break
-
-    print("=" * 60)
-
-
+# Main Loop
 def main():
-    print("Welcome! Type a news headline and I'll guess the topic.")
+    print("Welcome to EMAIL CLASSIFIER!")
     print("Topics:", ", ".join(TOPICS))
     print("Type 'exit' to stop.\n")
 
     while True:
-        headline = input("Headline: ").strip()
+        headline = input("Email Text: ").strip()
 
         if headline.lower() == "exit":
             print("Bye! Keep coding!")
             break
 
         if not headline:
-            print("Please type a headline (not empty).\n")
+            print("Please type an email text (not empty).\n")
             continue
 
-        # TODO: ATTEMPT TO MAKE REQUEST TO HUGGINGFACE API LOGIC & RETRY IN CASE OF ERRORS
         try:
             predictions = ask_hf(headline)
             show(headline, predictions)
+            print("________________________________________________________________________________________")
 
         except Exception as e:
             print("Oops! Something went wrong!")
