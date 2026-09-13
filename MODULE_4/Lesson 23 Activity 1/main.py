@@ -64,6 +64,7 @@ def show_flow(q1,q2):
 def run(q1,q2,title):
     print(f"\n--- {title} ---")
     base=hf(q1,q2)
+    print("Base: ", base)
     strong=sorted({w for w in clean(q1) if len(w)>=4} & {w for w in clean(q2) if len(w)>=4})
     s=smart_score(base,q1,q2,strong)
     show_result(s); show_flow(q1,q2)
@@ -79,7 +80,7 @@ def main():
         if not q1 or not q2: continue
         try:
             run(q1,q2,"YOUR QUESTIONS")
-            for i,(d1,d2) in enumerate(random.sample(DEMOS,2),1): run(d1,d2,f"RANDOM DEMO {i}")
+            #for i,(d1,d2) in enumerate(random.sample(DEMOS,2),1): run(d1,d2,f"RANDOM DEMO {i}")
             print("\n(Next round → Question 1 or 'exit')\n")
         except Exception as e:
             print("\n⚠️ Oops!",e,"\n")
