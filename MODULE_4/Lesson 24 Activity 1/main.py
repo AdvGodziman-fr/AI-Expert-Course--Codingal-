@@ -1,6 +1,8 @@
 import requests
-from config1 import HF_API_KEY
 from colorama import Fore, Style, init
+import os
+
+HF_API_KEY = os.environ.get("HF_API_KEY")
 
 # Initialize colorama for colored terminal output
 init(autoreset=True)

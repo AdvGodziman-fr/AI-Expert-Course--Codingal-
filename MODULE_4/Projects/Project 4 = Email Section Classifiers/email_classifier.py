@@ -1,6 +1,8 @@
 import requests
-from config2 import HUGGING_FACE_API_KEY
 import traceback
+import os
+
+HUGGING_FACE_API_KEY = os.environ.get("HF_API_KEY")
 
 # Using a state-of-the-art zero-shot model
 MODEL_ID = "facebook/bart-large-mnli"
