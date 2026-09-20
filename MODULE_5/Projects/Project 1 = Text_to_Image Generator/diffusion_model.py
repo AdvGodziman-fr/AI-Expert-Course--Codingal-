@@ -30,7 +30,7 @@ while True:
 
     print("Generating...")
     
-    image = client.text_to_image(prompt, model=model, negative_prompt="blurriness, distortions", guidance_scale=7.5)
+    image = client.text_to_image(prompt, model=model, negative_prompt="blurriness, distortions", guidance_scale=10)
 
     # If we got an image, save and display it
     image.show()
