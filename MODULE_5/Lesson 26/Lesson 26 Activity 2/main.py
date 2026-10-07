@@ -48,6 +48,7 @@ def generate_image_from_text(prompt):
             break
 
     raise Exception(last_err or "Request failed with status code 500: Unknown error")
+    
 
 def post_process_image(image):
     """Returns the processed PIL.Image (same I/O as your code)."""
